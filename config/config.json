@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "Redhat@1234",
+    "password": "xxxx",
     "database": "student_dev",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Redhat@1234",
+    "password": "xxxx",
     "database": "student_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
