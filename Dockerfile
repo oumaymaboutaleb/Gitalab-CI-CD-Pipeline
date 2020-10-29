@@ -1,6 +1,6 @@
 FROM node:10
 WORKDIR /application
-COPY nodejs-rest-student /application
+COPY . /application
 WORKDIR /application/nodejs-rest-student
 RUN npm install -g sequelize-cli
 RUN npm install
