@@ -25,6 +25,7 @@ describe('/GET students', () => {
 describe('/POST students', () => {
     it('it sould post the student info', (done) => {
         const student = {
+            id: 1,
             firstname: "Tony",
             lastname: "Stark",
             class: "PHD",
@@ -47,10 +48,10 @@ describe('/POST students', () => {
 describe('/PUT/:id student', () => {
     it("should update the student info", (done) => {
         const student = {
-            firstname: "lol",
-            lastname: "Himu",
+            firstname: "ironman",
+            lastname: "marvels",
         }
-        const Id = 22420;
+        const Id = 1;
          chai.request(app)
          .put('/students/' + Id)
          .send(student)
@@ -66,7 +67,7 @@ describe('/PUT/:id student', () => {
 describe('/DELETE/:id student', () => {
     it('it should DELETE the student recored given the id', (done) => {
         const student = {
-            "id": 22830
+            "id": 1
         }
          chai.request(app)
          .delete('/students/' + student.id)
