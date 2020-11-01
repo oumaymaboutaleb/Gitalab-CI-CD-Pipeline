@@ -51,7 +51,7 @@ It is recommended to use any secret management like vault or cyberark for any se
 ### Developing API
 
 1> **Creating Student Model for application**</br>
-     We need to create model for our application, and for that we will be using sequelize module. we need to initialize the model structure in our project folder which will create 4 folder. ``/config``, ``/model``, ``/migration``, ``/seedes``. </br>
+     We need to create model for our application, and for that we will be using sequelize module. we need to initialize the model structure in our project folder which will create 4 folder. ``/config``, ``/model``, ``/migration``, ``/seeders``. </br>
      ``` $ sequelize init```</br>
      After that, we need to create **Student** model for application and also mentions it's schema.</br>
      ``` $ sequelize  model:generate --name Student --attributes id:integer,firstname:string,lastname:string,class:string,nationality:string``` </br>
@@ -249,13 +249,13 @@ describe('/POST students', () => {
 });
 ```
 
-**[PUT] /user/{id} Testing**</br>
+**[PUT] /students/{id} Testing**</br>
 ```javascript
 describe('/PUT/:id student', () => {
     it("should update the student info", (done) => {
         const student = {
-            firstname: "lol",
-            lastname: "Himu",
+            firstname: "Ironman",
+            lastname: "Marvels",
         }
         const Id = 22420;
          chai.request(app)
