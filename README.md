@@ -317,7 +317,7 @@ All files                             |   86.57 |    66.67 |      65 |   86.57 |
   students.js                         |     100 |      100 |     100 |     100 |                   
 --------------------------------------|---------|----------|---------|---------|-------------------
 ```
-[Deploy a Rest API using API Gateway with NLB via VPC Private Link](https://github.com/nikitsrj/nodejs-rest-student/blob/main/API-Gateway-NLB%20.pdf)
+[Deploy Rest API using API Gateway with NLB via VPC Private Link](https://github.com/nikitsrj/nodejs-rest-student/blob/main/API-Gateway-NLB%20.pdf)
 
 
 
