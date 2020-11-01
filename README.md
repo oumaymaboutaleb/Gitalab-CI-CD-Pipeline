@@ -31,7 +31,7 @@ It is recommended to use any secret management like vault or cyberark for any se
 #### API Endpoints </br>
 1> **GET  /students** </br>
      Incase you have ingested some data in the database during the development of code, then you will be able to see the students details like below</br>
-     ![get/students](https://github.com/nikitsrj/nodejs-rest-student/blob/main/Screenshot_20201031_065113.png) </br>
+     ![get/students](https://github.com/nikitsrj/nodejs-rest-student/blob/main/images/Screenshot_20201031_065113.png) </br>
      else you will be able to have **200 status OK** with output **[]**. 
 ###### You can use hostname or IP of server inplace of locahost.
 
