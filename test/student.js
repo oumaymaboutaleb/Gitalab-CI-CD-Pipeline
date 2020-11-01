@@ -9,7 +9,7 @@ const should = chai.should();
 
 chai.use(chaiHttp)
 
-
+// testing /GET function
 describe('/GET students', () => {
     it('it should Get all students', (done) => {
         chai.request(app)
@@ -22,6 +22,7 @@ describe('/GET students', () => {
     });
 });
 
+// testing /POST function
 describe('/POST students', () => {
     it('it sould post the student info', (done) => {
         const student = {
@@ -44,7 +45,7 @@ describe('/POST students', () => {
     });
 });
 
-
+// Testing /PUT/{id} function
 describe('/PUT/:id student', () => {
     it("should update the student info", (done) => {
         const student = {
@@ -63,7 +64,7 @@ describe('/PUT/:id student', () => {
          });
     });
 });
-
+// Testing /DELETE/{id} function
 describe('/DELETE/:id student', () => {
     it('it should DELETE the student recored given the id', (done) => {
         const student = {
