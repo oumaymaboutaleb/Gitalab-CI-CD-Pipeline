@@ -29,22 +29,22 @@ It is recommended to use any secret management like vault or cyberark for any se
     ``` docker build -t nodejs-express-mysql:v1 .```</br>
     ``` docker run -d -p 80:3000 -p 3306:3306 --name nodejs-api-app nodejs-express-mysql:v1```</br>
 #### API Endpoints </br>
-1> **GET  /students**  (Fetch all the students record)</br>
+1> **[GET]  /students**  (Fetch all the students record)</br>
      Incase you have ingested some data in the database during the development of code, then you will be able to see the students details like below</br>
      ![get/students](https://github.com/nikitsrj/nodejs-rest-student/blob/main/images/Screenshot_20201031_065113.png) </br>
      else you will be able to have **200 status OK** with output **[]**. 
 ###### You can use hostname or IP of server inplace of locahost.
 
-2> **POST /students** (Upload the student record)</br>
+2> **[POST] /students** (Upload the student record)</br>
      You need to pass json body with students details to push the data in database.
      ![post /students](https://github.com/nikitsrj/nodejs-rest-student/blob/main/images/Screenshot_20201101_144325.png)</br>
-3> **PUT /students/{id}** (Update a student record based on the id)</br>
+3> **[PUT] /students/{id}** (Update a student record based on the id)</br>
      You need to pass the parameter in json body which you want to update.
      ![put /students](https://github.com/nikitsrj/nodejs-rest-student/blob/main/images/Screenshot_20201101_155203.png)</br>
-4> **GET /students/{id}** (Get student record by it's id)
+4> **[GET] /students/{id}** (Get student record by it's id)
      You need to pass the students id with URL.
      ![get/students](https://github.com/nikitsrj/nodejs-rest-student/blob/main/images/Screenshot_20201101_160400.png) </br>
-5> **DELETE /students/{id}** (Delete the student record by it's id)
+5> **[DELETE] /students/{id}** (Delete the student record by it's id)
      You need to pass the student id with the URL
      ![delete /students](https://github.com/nikitsrj/nodejs-rest-student/blob/main/images/Screenshot_20201101_160704.png) </br>
      
@@ -130,10 +130,10 @@ module.exports = {
 ```
 In migration, two fields are automatically added. Those are ```createdAt``` and ```updatedAt``` field.</br> Then we need to migrate model to database by just running the command ```sequelize db:migrate``` to create table at database and ORM mapping purpose.</br>
 
-2> **Creating Controller for the rest api**
+2> **Creating Controller for the rest api** </br>
 For controller we have to create the ```controller``` folder to root of the application. In our case ```student.controller.js``` file is created. That controller control all the business logic of the application. We export the different function from controller file. </br>
 
-#### For POST Api example code will be
+#### For [POST] Api example code will be
 ```javascript
 function save(req, res) {
     const student = {
@@ -157,7 +157,7 @@ function save(req, res) {
     });
 }
 ```
-#### For GET Api example code will be
+#### For [GET] Api example code will be
 ```javascript
 function showAll(req,res){
     models.Student.findAll().then(result => {
@@ -190,15 +190,15 @@ module.exports = router;
 1. Create the folder ```test``` at root directory
 2. Create the file named ```student.js``` inside ```test``` folder
 
-For testing with ```Mocha``` and ```Chai``` we have just add the ```Mocha``` globally
-```npm install -g mocha```
-In ```student.js``` file we have to write script for api testing.
+For testing with ```Mocha``` and ```Chai``` we have just add the ```Mocha``` globally</br>
+```npm install -g mocha```</br>
+In ```student.js``` file we have to write script for api testing.</br>
 
-For testing purpose we need to change Node js environment variable in ```student.js``` file
+For testing purpose we need to change Node js environment variable in ```student.js``` file</br>
 ```javascript
 process.env.NODE_ENV = "test"
 ```
-Then we need to add the model which will be use for testing
+Then we need to add the model which will be use for testing</br>
 ```javascript
 const Student = require('../models').Student;
 ```
@@ -211,7 +211,7 @@ const server = require('../server');
 const should = chai.should();
 chai.use(chaiHttp)
 ```
-**[GET] /students testing**
+**[GET] /students testing**</br>
 ```javascript
 describe('/GET students', () => {
     it('it should Get all students', (done) => {
@@ -225,7 +225,7 @@ describe('/GET students', () => {
     });
 });
 ```
-**[POST] /students testing**
+**[POST] /students testing**</br>
 ```javascript
 describe('/POST students', () => {
     it('it sould post the student info', (done) => {
@@ -249,7 +249,7 @@ describe('/POST students', () => {
 });
 ```
 
-**[PUT] /user/{id} Testing**
+**[PUT] /user/{id} Testing**</br>
 ```javascript
 describe('/PUT/:id student', () => {
     it("should update the student info", (done) => {
@@ -271,10 +271,10 @@ describe('/PUT/:id student', () => {
 });
 ```
 #### Running Test cases
-To do the unit testing, we need to create a separate DB and mention the details in test section of config/config.json file, so that while running test case, it should use test db. Once this step is done, then we need to create the table in test db by passing the environment.
+To do the unit testing, we need to create a separate DB and mention the details in test section of config/config.json file, so that while running test case, it should use test db. Once this step is done, then we need to create the table in test db by passing the environment.</br>
    ``` $ sequelize db:migrate --env=test```</br>
 Then we also need to install ```nyc``` module (```npm install --save-dev nyc```) to get the code coverage.</br>
-Now we need to run ```nyc mocha --exit``` , then we will get the test result as well code coverage report.
+Now we need to run ```nyc mocha --exit``` , then we will get the test result as well code coverage report. </br>
 
 ```
 > nodejs-rest-student@1.0.0 test /var/lib/jenkins/workspace/nodejs-rest-express-TEST
