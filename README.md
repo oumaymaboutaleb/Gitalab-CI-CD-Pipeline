@@ -1,8 +1,9 @@
 # nodejs-express-mysql
-#### A simple CRUD implementation of REST API using Nodejs, Express, seqealize and Mysql. This repo also includes the test cases which is executed using Mocha and Chai and code coverage is taken care by nyc. This readme file is divided into three different section.
+#### A simple CRUD implementation of REST API using Nodejs, Express, seqealize and Mysql. This repo also includes the test cases which is executed using Mocha and Chai and code coverage is taken care by nyc. This readme file is divided into four different section.
 ##### 1. Installation : Deploying the development version of api
 ##### 2. Developing API : To dive into the code blocks of api development
-##### 3. Writing Test cases : Writing test cases and execute it 
+##### 3. Writing Test cases : Writing test cases and execute it
+##### 4. Deploy Rest API using API Gateway
 ###### Note: The development of api had been done in CentOS7 and deployed using node:10 docker image backed by AWS RDS MYSQL and called via Postman. 
 
 ### Installation
