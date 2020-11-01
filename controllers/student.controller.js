@@ -5,6 +5,8 @@
 
 const models = require('../models')
 
+// function to do the POST request and upload the student record
+
 function save(req, res) {
     const student = {
         id: req.body.id,
@@ -27,6 +29,7 @@ function save(req, res) {
     });
 }
 
+// function to get the student record by it's id
 function showbyId(req, res){
     const id = req.params.id;
 
@@ -39,6 +42,7 @@ function showbyId(req, res){
     });
 }
 
+//function to fetch all the student record
 function showAll(req,res){
     models.Student.findAll().then(result => {
         res.status(200).json(result);
@@ -48,7 +52,7 @@ function showAll(req,res){
         });
     });
 }
-
+// function to update the student record by id
 
 function update(req,res){
     const id = req.params.id;
@@ -72,7 +76,7 @@ function update(req,res){
         });
     })
 }
-
+// function to delete the student record based on it's id
 function destroy(req, res){
     const id = req.params.id;
     models.Student.destroy({where: {id:id}}).then(result => {
@@ -87,7 +91,7 @@ function destroy(req, res){
     });
 }
 
-
+// exporting all the function so that, it can be used in routes
 
 module.exports = {
     save: save,
