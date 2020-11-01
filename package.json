@@ -1,7 +1,7 @@
 {
   "name": "nodejs-rest-student",
   "version": "1.0.0",
-  "description": "A REST API with Nodejs and Mysql for student Registration",
+  "description": "A REST API with Nodejs and Mysql",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
