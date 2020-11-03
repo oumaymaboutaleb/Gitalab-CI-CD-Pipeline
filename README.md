@@ -231,7 +231,7 @@ describe('/GET students', () => {
 describe('/POST students', () => {
     it('it sould post the student info', (done) => {
         const student = {
-            firstname: "Tony",
+            firstname: "ironman",
             lastname: "Stark",
             class: "PHD",
             nationality: "USA"
