@@ -9,9 +9,9 @@ test-job:
   stage: test 
   image: node
   before_script:
-    - apt update
-    - apt install mysql-server
-    - systemctl start mysql
+    - sudo apt update
+    - sudo apt install mysql-server-8.0 -y 
+    - sudo systemctl start mysql
     - mysql -u root -p -e "CREATE DATABASE student_test;"
     - npm install -g sequelize-cli 
     - npm install
