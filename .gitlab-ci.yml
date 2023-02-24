@@ -10,8 +10,9 @@ test-job:
   image: node:19-alpine3.16
   before_script:
     
-    - apk add mysql mysql-client
-    - mysqld_safe &
+    - RUN apk add --no-cache mysql-client
+    - RUN apk add --no-cache mariadb mariadb-client
+    - rc-service mysql start
     - mysql -u root -p -e "CREATE DATABASE student_test;"
     - npm install -g sequelize-cli 
     - npm install
