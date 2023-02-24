@@ -9,10 +9,9 @@ test-job:
   stage: test 
   image: node
   before_script:
-    
-    - apk add --no-cache mysql-client
-    - apk add --no-cache mariadb mariadb-client
-    - rc-service mysql start
+    - apt update
+    - apt install mysql-server
+    - systemctl start mysql
     - mysql -u root -p -e "CREATE DATABASE student_test;"
     - npm install -g sequelize-cli 
     - npm install
