@@ -9,8 +9,8 @@ test-job:
   stage: test 
   image: node:19-alpine3.16
   before_script:
-    - apt update 
-    - apt install mysql-server
+    - apk update 
+    - apk install mysql-server
     - npm install -g sequelize-cli 
     - npm install
     - mysql -u root -p -e "CREATE DATABASE student_test;"
