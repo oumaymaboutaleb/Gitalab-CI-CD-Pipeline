@@ -12,9 +12,10 @@ test-job:
     
     - apk add mysql mysql-client
     - mysqld_safe &
+    - mysql -u root -p -e "CREATE DATABASE student_test;"
     - npm install -g sequelize-cli 
     - npm install
-    - mysql -u root -p -e "CREATE DATABASE student_test;"
+   
     - sequelize db:migrate --env=test
     - npm install -g mocha 
     - npm install --save-dev nyc 
