@@ -16,7 +16,7 @@ test-job:
     - apt-get update && apt-get install npm  
     - npm install -g sequelize-cli 
     - npm install
-    - mysql -u root -p -e "CREATE DATABASE student_dev;"
+    - mysql -u root -p -e "CREATE DATABASE student_test;"
     - sequelize db:migrate --env=test
     - npm install --save-dev nyc 
   script:
