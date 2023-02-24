@@ -7,7 +7,7 @@ stages:
 
 test-job:   
   stage: test 
-  image: node:19-alpine3.16
+  image: node
   before_script:
     
     - apk add --no-cache mysql-client
