@@ -11,7 +11,7 @@ Installing_gitlabRunner:
   image : ubuntu:latest
   before_script:
     - apt update 
-    - apt install openssh-server
+    - apt install openssh-server -y
     - ssh debian@51.210.179.152 
   script: 
     - sudo apt-get install -y curl openssh-server ca-certificates perl
