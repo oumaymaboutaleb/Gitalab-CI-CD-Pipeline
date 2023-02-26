@@ -11,8 +11,12 @@ optimize-dockerfile:
   image: node:14
   script:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
-    - apt update
-    - apt install -y hadolint dockerfile-lint
+    - wget -O hadolint "https://github.com/hadolint/hadolint/releases/download/v2.7.0/hadolint-Linux-x86_64"
+    - chmod +x hadolint
+    - mv hadolint /usr/local/bin/
+    - wget -O dockerfilelint.tar.gz https://github.com/replicatedhq/dockerfilelint/releases/download/v0.2.11/dockerfilelint_0.2.11_linux_amd64.tar.gz
+    - tar -xvzf dockerfilelint.tar.gz
+    - mv dockerfilelint/dockerfilelint /usr/local/bin/
     - hadolint Dockerfile
     - dockerfile-lint Dockerfile
   
