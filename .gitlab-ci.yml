@@ -11,7 +11,7 @@ optimize-dockerfile:
   image: registry.gitlab.com/pipeline-components/hadolint:latest
   script:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
-    - hadolint Dockerfile  || true 
+    - hadolint Dockerfile > Dockerfile  || true 
   
 optimize:
   stage: optimize
@@ -19,7 +19,6 @@ optimize:
   services:
     - docker:20.10.8-dind
   script:
-    - docker run --rm -i hadolint Dockerfile | tee Dockerfile
     - docker run --rm -i ghcr.io/jdolitsky/dockerfile-optimizer:latest < Dockerfile | tee Dockerfile
 
 
