@@ -1,7 +1,15 @@
-stages:          
-  - build
+stages:   
+  - scanning  
   - test
+  - build
   - deploy
+
+ 
+
+gitguardian scan:
+  image: gitguardian/ggshield:latest
+  stage: scanning
+  script: ggshield secret scan ci
 
 
 
