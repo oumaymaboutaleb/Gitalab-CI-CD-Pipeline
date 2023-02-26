@@ -19,7 +19,7 @@ optimize:
   services:
     - docker:20.10.8-dind
   script:
-    - docker run --rm -i hadolint/hadolint < Dockerfile | tee Dockerfile
+    - docker run --rm -i hadolint Dockerfile | tee Dockerfile
     - docker run --rm -i ghcr.io/jdolitsky/dockerfile-optimizer:latest < Dockerfile | tee Dockerfile
 
 
