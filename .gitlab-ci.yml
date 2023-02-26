@@ -9,9 +9,9 @@ stages:
 
 Building:
   stage: build
-  image: 20.10.16:stable
+  image: docker:23
   services:
-     - docker:20.10.16-dind
+     - docker:23-dind
   variables:
     DOCKER_TLS_CERTDIR: "/certs"
   
