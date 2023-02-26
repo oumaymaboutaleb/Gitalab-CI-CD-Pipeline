@@ -12,7 +12,7 @@ test-job:
     - apt update
     
     - apt-get install mariadb-server -y
-    - systemctl start mysql
+    - /etc/init.d/mysql start
     - mysql -u root -p -e "CREATE DATABASE student_test;"
     - npm install -g sequelize-cli 
     - npm install
