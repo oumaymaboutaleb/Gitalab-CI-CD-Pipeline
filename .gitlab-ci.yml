@@ -13,13 +13,6 @@ optimize-dockerfile:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
     - hadolint Dockerfile > Dockerfile  || true 
   
-optimize:
-  stage: optimize
-  image: docker:20.10.8
-  services:
-    - docker:20.10.8-dind
-  script:
-    - docker run --rm -i ghcr.io/jdolitsky/dockerfile-optimizer:latest < Dockerfile | tee Dockerfile
 
 
 
