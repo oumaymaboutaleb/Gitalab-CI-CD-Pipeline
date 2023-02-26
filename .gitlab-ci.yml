@@ -9,7 +9,7 @@ stages:
 Linting_Dockerfile:
 
   stage: optimize
-  image: docker:20
+  image: hadolint/hadolint
   script:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
     - hadolint Dockerfile || true 
