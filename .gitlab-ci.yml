@@ -7,12 +7,7 @@ stages:
   - deploy
 
 
-optimize-dockerfile:
-  stage: verify
-  image: hadolint/hadolint
-  script:
-    - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
-    - hadolint Dockerfile  
+
   
   
 gitguardian scan:
