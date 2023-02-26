@@ -16,7 +16,7 @@ test-job:
     - apt-get install mariadb-server -y
     - /etc/init.d/mysql start
     - mysql -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
-    - mysql -u root -p -e "CREATE DATABASE student_test;"
+    - mysql -u root -p root -e "CREATE DATABASE student_test;"
     - npm install -g sequelize-cli 
     - npm install
     - sequelize db:migrate --env=test
