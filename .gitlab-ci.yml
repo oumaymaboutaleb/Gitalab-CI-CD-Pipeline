@@ -11,7 +11,7 @@ test-job:
   before_script:
     - apt update
     
-    - sudo apt install mysql-server -y 
+    - apt install mysql-server -y 
     - systemctl start mysql
     - mysql -u root -p -e "CREATE DATABASE student_test;"
     - npm install -g sequelize-cli 
