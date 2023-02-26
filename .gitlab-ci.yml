@@ -5,18 +5,7 @@ stages:
   - test
   - build
   - deploy
-
-
-  
-    
-
-
-
-
-
-
-
-  #under construction
+#under construction
 Linting_Dockerfile:
   tags: 
     - docker 
