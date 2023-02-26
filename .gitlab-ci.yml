@@ -11,7 +11,8 @@ optimize-dockerfile:
   image: node:14
   script:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
-    - apt update && apt install -y hadolint dockerfile-lint
+    - apt update
+    - apt install -y hadolint dockerfile-lint
     - hadolint Dockerfile
     - dockerfile-lint Dockerfile
   
