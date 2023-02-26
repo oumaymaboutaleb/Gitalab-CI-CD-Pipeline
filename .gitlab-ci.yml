@@ -1,8 +1,23 @@
 stages:   
+  - optimize
   - scanning  
   - test
   - build
   - deploy
+
+
+optimize-dockerfile:
+  stage: optimize
+  image: docker:20.10.8
+  services:
+    - docker:20.10.8-dind
+  script:
+    - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
+    - apt add --update hadolint dockerfile-lint
+    - hadolint Dockerfile
+    - dockerfile-lint Dockerfile
+    
+
 
  
 
