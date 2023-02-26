@@ -7,8 +7,7 @@ stages:
   - deploy
 #under construction
 Linting_Dockerfile:
-  tags: 
-    - docker 
+
   stage: optimize
   image: docker:20
   script:
@@ -23,15 +22,13 @@ Linting_Dockerfile:
 
 # to scan if any sensitive data has been pushed to git
 gitguardian scan:
-  tags: 
-    - docker 
+ 
   stage: scanning
   image: gitguardian/ggshield:latest
   script: ggshield secret scan ci
 # execute the provided application test 
 test-job:   
-  tags: 
-    - docker 
+
   stage: test 
   image: node:14
   before_script:
