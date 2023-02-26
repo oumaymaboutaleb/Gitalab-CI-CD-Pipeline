@@ -9,9 +9,11 @@ stages:
 Linting_Dockerfile:
 
   stage: optimize
-  image: hadolint/hadolint
+  image: docker:20
   script:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
+    - apt update
+    - apt install -y hadolint
     - hadolint Dockerfile || true 
   artifacts:
     paths:
