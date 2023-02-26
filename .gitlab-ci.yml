@@ -1,28 +1,45 @@
 stages:   
-  - verify
+  - installation
   - optimize
   - scanning  
   - test
   - build
   - deploy
 
+Installing_gitlabRunner:
+  stage: installation
+  before_script:
+    - sshpass -p $password ssh debian@51.210.179.152 -y 
+  script: 
+    - sudo apt-get install -y curl openssh-server ca-certificates perl
+    - curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash export GITLAB_RUNNER_DISABLE_SKEL=true; sudo -E apt-get install gitlab-runner
+
+
+
+
+
+
+
+  #under construction
 Linting_Dockerfile:
-  stage: verify
+  stage: optimize
   image: docker:20
   script:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
     - hadolint Dockerfile || true 
-    - dockerfile-utils optimize --dockerfile Dockerfile --output optimized-Dockerfile
   artifacts:
     paths:
       - Dockerfile
+  #under construction
 
+ 
 
+# to scan if any sensitive data has been pushed to git
 gitguardian scan:
-  image: gitguardian/ggshield:latest
   stage: scanning
+  image: gitguardian/ggshield:latest
   script: ggshield secret scan ci
-  
+# execute the provided application test 
 test-job:   
   stage: test 
   image: node:14
