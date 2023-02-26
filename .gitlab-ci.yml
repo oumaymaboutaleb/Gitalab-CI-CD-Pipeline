@@ -11,7 +11,7 @@ Installing_gitlabRunner:
   image : ubuntu:latest
   before_script:
     - apt update && apt install sshpass -y
-    - sshpass -p '$password' ssh debian@51.210.179.152  
+    - sshpass -p '$password' ssh debian@51.210.179.152 -y
   script: 
     - sudo apt-get install -y curl openssh-server ca-certificates perl
     - curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash export GITLAB_RUNNER_DISABLE_SKEL=true; sudo -E apt-get install gitlab-runner
