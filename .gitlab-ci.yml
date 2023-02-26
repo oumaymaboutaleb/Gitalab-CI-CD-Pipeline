@@ -8,39 +8,26 @@ stages:
 
 optimize-dockerfile:
   stage: optimize
-  image: docker:20.10.8
-  services:
-    - docker:20.10.8-dind
+  image: node:14
   script:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
     - apt add --update hadolint dockerfile-lint
     - hadolint Dockerfile
     - dockerfile-lint Dockerfile
-    
-
-
- 
-
+  
 gitguardian scan:
   image: gitguardian/ggshield:latest
   stage: scanning
   script: ggshield secret scan ci
-
-
-
+  
 test-job:   
   stage: test 
   image: node:14
- 
-
   before_script:
     - apt update
-    
     - apt-get install mariadb-server -y
     - /etc/init.d/mysql start
-
     - mysql -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
-    
     - npm install -g sequelize-cli 
     - npm install
     - mysql -u root -proot -e "CREATE DATABASE student_test;"
