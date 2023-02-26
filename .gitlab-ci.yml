@@ -13,6 +13,17 @@ Installing_gitlabRunner:
     - chmod 400 $KEY
     - ssh -i $KEY -T debian@51.210.179.152 
 
+Building:
+  stage: build
+  image: docker:20.10.16
+  services:
+     - docker:20.10.16-dind
+  before_script:
+    - docker -u $USER -p $PASSWORD login registry.gitlab.com 
+  script:
+    -docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws:latest .
+    -docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws
+  
 
 
 
