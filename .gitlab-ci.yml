@@ -6,6 +6,14 @@ stages:
   - build
   - deploy
 
+optimize-dockerfile:
+  stage: verify
+  image: registry.gitlab.com/pipeline-components/hadolint:latest
+  script:
+    - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
+    - hadolint Dockerfile  
+
+
 
 
   
