@@ -8,15 +8,14 @@ stages:
 test-job:   
   stage: test 
   image: node:14
-  variables:
-    PSW: root
+ 
 
   before_script:
     - apt update
     
     - apt-get install mariadb-server -y
     - /etc/init.d/mysql start
-    -  mysql -u root -p$PSW -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$PSW';"
+    - mysql -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
     - mysql -u root -p -e "CREATE DATABASE student_test;"
     - npm install -g sequelize-cli 
     - npm install
