@@ -9,11 +9,11 @@ stages:
 
 Building:
   stage: build
-  image: docker:20.10.16
+  image: docker:stable
   services:
-     - docker:20.10.16-dind
+     - docker:stable-dind
   before_script:
-    - docker login -u $USER -p $PASSWORD registry.gitlab.com 
+    - docker login  registry.gitlab.com 
   script:
     -docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws:latest .
     -docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws
