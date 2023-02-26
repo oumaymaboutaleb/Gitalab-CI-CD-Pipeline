@@ -23,7 +23,7 @@ test-job:
     - mysql -u root -proot -e "CREATE DATABASE student_test;"
     - sequelize db:migrate --env=test
     - npm install -g mocha 
-    - npm install --save-dev nyc 
+    - npm install -g nyc 
   script:
     - nyc mocha --exit
 
