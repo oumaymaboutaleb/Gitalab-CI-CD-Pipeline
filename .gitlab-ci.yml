@@ -6,19 +6,14 @@ stages:
   - build
   - deploy
 
-optimize-dockerfile:
+Linting_Dockerfile:
   stage: verify
   image: registry.gitlab.com/pipeline-components/hadolint:latest
   script:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
-    - hadolint Dockerfile > Dockerfile  || true 
-  
-
-
-
-
-  
-  
+    - cat Dockerfile
+    - hadolint Dockerfile || true 
+    
 gitguardian scan:
   image: gitguardian/ggshield:latest
   stage: scanning
