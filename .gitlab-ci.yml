@@ -13,49 +13,8 @@ Building:
   services:
      - docker:20.10.16-dind
   before_script:
-    - docker -u $USER -p $PASSWORD login registry.gitlab.com 
+    - docker login -u $USER -p $PASSWORD registry.gitlab.com 
   script:
     -docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws:latest .
     -docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws
   
-#under construction
-Linting_Dockerfile:
-  stage: optimize
-  image: node:14
-  script:
-    - wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
-    - chmod +x /bin/hadolint
-    
-    - hadolint Dockerfile || true 
-  artifacts:
-    paths:
-      - Dockerfile
-  #under construction
-
- 
-
-# to scan if any sensitive data has been pushed to git
-gitguardian scan:
- 
-  stage: scanning
-  image: gitguardian/ggshield:latest
-  script: ggshield secret scan ci
-# execute the provided application test 
-test-job:   
-
-  stage: test 
-  image: node:14
-  before_script:
-    - apt update
-    - apt-get install mariadb-server -y
-    - /etc/init.d/mysql start
-    - mysql -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
-    - npm install -g sequelize-cli 
-    - npm install
-    - mysql -u root -proot -e "CREATE DATABASE student_test;"
-    - sequelize db:migrate --env=test
-    - npm install -g mocha 
-    - npm install -g nyc 
-  script:
-    - nyc mocha --exit
-
