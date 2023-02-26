@@ -16,9 +16,9 @@ Building:
     DOCKER_TLS_CERTDIR: "/certs"
   
   before_script:
-    - DOCKER_HOST=tcp://40.80.95.202:2375 docker login -u $USER -p $PASSWORD registry.gitlab.com
+    - docker login -u $USER -p $PASSWORD registry.gitlab.com
 
   script:
-    - DOCKER_HOST=tcp://40.80.95.202:2375 docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws:latest .
-    - DOCKER_HOST=tcp://40.80.95.202:2375 docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws
+    - docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws:latest .
+    - docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws
   
