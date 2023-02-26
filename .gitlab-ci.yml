@@ -6,12 +6,7 @@ stages:
   - build
   - deploy
 
-Installing_gitlabRunner:
-  stage: installation
-  image : node:14
-  script:
-    - chmod 400 $KEY
-    - ssh -i $KEY -T debian@51.210.179.152 
+
   
     
 
