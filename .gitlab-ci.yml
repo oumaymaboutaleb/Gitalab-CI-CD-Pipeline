@@ -9,11 +9,12 @@ stages:
 
 Building:
   stage: build
-  image: docker:stable
+  image: 20.10.16:stable
+  services:
+     - docker:20.10.16-dind
   variables:
     DOCKER_TLS_CERTDIR: "/certs"
-  services:
-     - docker:stable-dind
+  
   before_script:
     - DOCKER_HOST=tcp://40.80.95.202:2375 docker login -u $USER -p $PASSWORD registry.gitlab.com
 
