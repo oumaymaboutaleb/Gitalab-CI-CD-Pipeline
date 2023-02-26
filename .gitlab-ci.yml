@@ -15,7 +15,7 @@ Building:
   services:
      - docker:stable-dind
   before_script:
-    - docker login -u $USER -p $PASSWORD registry.gitlab.com 
+    - docker login -u $USER -p $PASSWORD registry.gitlab.com --host=40.80.95.202:2375
   script:
     -docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws:latest .
     -docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws
