@@ -10,10 +10,12 @@ stages:
 Building:
   stage: build
   image: docker:stable
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
   services:
      - docker:stable-dind
   before_script:
-    - docker login  registry.gitlab.com 
+    - docker login -u $USER -p $PASSWORD registry.gitlab.com 
   script:
     -docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws:latest .
     -docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws
