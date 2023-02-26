@@ -8,12 +8,16 @@ stages:
 
 Linting_Dockerfile:
   stage: verify
-  image: registry.gitlab.com/pipeline-components/hadolint:latest
+  image: docker:20
   script:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
-    - cat Dockerfile
     - hadolint Dockerfile || true 
-    
+    - dockerfile-utils optimize --dockerfile Dockerfile --output optimized-Dockerfile
+  artifacts:
+    paths:
+      - Dockerfile
+
+
 gitguardian scan:
   image: gitguardian/ggshield:latest
   stage: scanning
