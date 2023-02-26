@@ -1,4 +1,5 @@
 stages:   
+  - verify
   - optimize
   - scanning  
   - test
@@ -7,13 +8,10 @@ stages:
 
 
 optimize-dockerfile:
-  stage: optimize
-  image: node:14
+  stage: verify
+  image: hadolint/hadolint
   script:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
-    - wget -O hadolint "https://github.com/hadolint/hadolint/releases/download/v2.7.0/hadolint-Linux-x86_64"
-    - chmod +x hadolint
-    - mv hadolint /usr/local/bin/
     - hadolint Dockerfile  
   
   
