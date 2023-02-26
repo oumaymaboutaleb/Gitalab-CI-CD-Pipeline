@@ -7,9 +7,8 @@ stages:
   - deploy
 #under construction
 Linting_Dockerfile:
-
   stage: optimize
-  image: docker:20
+  image: node:14
   script:
     - sed -i 's/FROM node:/FROM node:alpine/' Dockerfile
     - apt update
