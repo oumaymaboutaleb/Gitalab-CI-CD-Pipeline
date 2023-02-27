@@ -9,11 +9,12 @@ stages:
 
 Building:
   stage: build
-  image: docker:23
+  image: docker:20
   services:
-     - docker:docker:19.03-dind
+     - name:  docker-dind
+       entrypoint: ["dockerd-entrypoint.sh", "--tls=false"]
   variables:
-    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_TLS_CERTDIR: ""
   
   before_script:
     - docker login -u $USER -p $PASSWORD registry.gitlab.com
