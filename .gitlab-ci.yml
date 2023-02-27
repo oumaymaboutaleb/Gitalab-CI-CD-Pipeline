@@ -1,5 +1,4 @@
 stages:   
-  - install
   - optimize
   - scanning  
   - test
@@ -7,11 +6,64 @@ stages:
   - deploy
 
 
-Installing_gitlabRunner:
-  stage: install
-  image : ubuntu:18.04
+#under construction
+Linting_Dockerfile:
+  stage: optimize
+  image: node:14
   script:
-    - apt-get update
-    - apt-get install sshpass -y
-    - sshpass -p 'fGKP7ACuRTH9' ssh -T debian@51.210.179.152
+    - wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
+    - chmod +x /bin/hadolint
+    
+    - hadolint Dockerfile || true 
+  artifacts:
+    paths:
+      - Dockerfile
+  #under construction
 
+ 
+
+# to scan if any sensitive data has been pushed to git
+gitguardian scan:
+ 
+  stage: scanning
+  image: gitguardian/ggshield:latest
+  script: ggshield secret scan ci
+# execute the provided application test 
+test-job:   
+
+  stage: test 
+  image: node:14
+  before_script:
+    - apt update
+    - apt-get install mariadb-server -y
+    - /etc/init.d/mysql start
+    - mysql -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
+    - npm install -g sequelize-cli 
+    - npm install
+    - mysql -u root -proot -e "CREATE DATABASE student_test;"
+    - sequelize db:migrate --env=test
+    - npm install -g mocha 
+    - npm install -g nyc 
+  script:
+    - nyc mocha --exit
+
+Building:
+  stage: build
+  image: docker:20
+  services:
+     - name: docker:20-dind
+       entrypoint: ["dockerd-entrypoint.sh", "--tls=false"]
+       alias: docker
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_DRIVER: overlay2 
+    DOCKER_HOST: tcp://docker:2375
+ 
+  
+  before_script:
+    - docker login -u $USER -p $PASSWORD registry.gitlab.com
+
+  script:
+    - docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws .
+    - docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws
+  
