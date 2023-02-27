@@ -6,4 +6,4 @@ RUN npm install -g sequelize-cli
 RUN npm install
 RUN npm run db:migrate
 CMD npm start
-EXPOSE 3000 3306
+EXPOSE 3000 3307
