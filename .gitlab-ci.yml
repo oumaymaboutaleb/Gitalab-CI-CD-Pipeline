@@ -18,7 +18,7 @@ Building:
     DOCKER_TLS_CERTDIR: ""
     
  
-  
+   
   before_script:
     - docker login -u $USER -p $PASSWORD registry.gitlab.com
 
