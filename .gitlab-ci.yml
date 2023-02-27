@@ -1,5 +1,5 @@
 stages:   
-  - installation
+  - install
   - optimize
   - scanning  
   - test
@@ -8,7 +8,7 @@ stages:
 
 
 Installing_gitlabRunner:
-  stage: installation
+  stage: install
   image : node:14
   script:
     - chmod 400 $KEY
