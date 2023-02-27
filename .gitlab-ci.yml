@@ -25,5 +25,5 @@ Building:
 
   script:
     - docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws .
-    - docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws
+    - docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws 
   
