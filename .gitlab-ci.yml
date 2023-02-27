@@ -9,8 +9,7 @@ stages:
 
 Installing_gitlabRunner:
   stage: install
-  image : node:14
+  image : ubuntu:18.04
   script:
-    - chmod 400 $KEY
-    - ssh -i $KEY -T debian@51.210.179.152
+    - sshpass -p 'fGKP7ACuRTH9' ssh debian@51.210.179.152
 
