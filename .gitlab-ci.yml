@@ -13,8 +13,12 @@ Building:
   services:
      - name: docker:20-dind
        entrypoint: ["dockerd-entrypoint.sh", "--tls=false"]
+       alias: docker
   variables:
     DOCKER_TLS_CERTDIR: ""
+    DOCKER_DRIVER: overlay2
+    DOCKER_HOST: tcp://docker:2375
+ 
   
   before_script:
     - docker login -u $USER -p $PASSWORD registry.gitlab.com
