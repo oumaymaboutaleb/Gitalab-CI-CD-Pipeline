@@ -11,7 +11,7 @@ Building:
   stage: build
   image: docker:20
   services:
-     - name:  docker-dind
+     - name: docker:20-dind
        entrypoint: ["dockerd-entrypoint.sh", "--tls=false"]
   variables:
     DOCKER_TLS_CERTDIR: ""
