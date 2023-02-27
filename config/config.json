@@ -4,7 +4,8 @@
     "password": "root",
     "database": "student_dev",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "socketPath": "/opt/lampp/var/mysql/mysql.sock"
   },
   "test": {
     "username": "root",
