@@ -24,6 +24,6 @@ Building:
     - docker login -u $USER -p $PASSWORD registry.gitlab.com
 
   script:
-    - docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws:latest .
+    - docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws .
     - docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws
   
