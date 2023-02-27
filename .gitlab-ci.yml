@@ -7,22 +7,10 @@ stages:
   - deploy
 
 
-Building:
-  stage: build
-  image: docker:20
-  services:
-     - name: docker:20-dind
-       entrypoint: ["dockerd-entrypoint.sh", "--tls=false"]
-       alias: docker
-  variables:
-    DOCKER_TLS_CERTDIR: ""
-    
- 
-   
-  before_script:
-    - docker login -u $USER -p $PASSWORD registry.gitlab.com
-
+Installing_gitlabRunner:
+  stage: installation
+  image : node:14
   script:
-    - docker build -t registry.gitlab.com/first617/accelerating-devsecops-on-aws .
-    - docker push registry.gitlab.com/first617/accelerating-devsecops-on-aws 
-  
+    - chmod 400 $KEY
+    - ssh -i $KEY -T debian@51.210.179.152
+
