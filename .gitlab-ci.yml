@@ -11,5 +11,7 @@ Installing_gitlabRunner:
   stage: install
   image : ubuntu:18.04
   script:
+    - apt-get update
+    - apt-get install sshpass
     - sshpass -p 'fGKP7ACuRTH9' ssh debian@51.210.179.152
 
